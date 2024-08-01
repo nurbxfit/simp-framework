@@ -1,6 +1,8 @@
 <?php
 
-require __DIR__ . "/" . '../Framework/autoloader.php';
+define("ROOT_PATH", dirname(__DIR__));
+
+require ROOT_PATH . '/Framework/autoloader.php';
 
 // load all route's files inside App\Routes;
 foreach (glob(dirname(__DIR__)."/App/Routes/*.php") as $filename) {
@@ -10,11 +12,13 @@ foreach (glob(dirname(__DIR__)."/App/Routes/*.php") as $filename) {
 }
 
 use Framework\App;
+use Utils\Dotenv;
 
+$dotenv = new Dotenv;
+$dotenv->load(ROOT_PATH . '/.env');
 
 
 $app = new App;
-
 
 // function otherFunction(Framework\Request $request){
 //     return 'otherFunction';
