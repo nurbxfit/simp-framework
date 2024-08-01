@@ -24,13 +24,40 @@ class DB {
         return $this->where('id', '=', $id)->execute()->fetch();
     }
 
-    public function where(string $column, string $operator , $value) {
+    public function where(string $column, string $operator , $value = null) {
         // add filter into the where query;
         if($value === null){
             $value = $operator;
             $operator = '=';
         }
-        $this->query .= " WHERE {$column} {$operator} ?";
+
+        // check if query empty, then we use the WHERE query
+        // else we append an AND query to it
+        if(empty($this->query)){
+            $this->query .= " WHERE {$column} {$operator} ?";
+        }else{
+            $this->query .= " AND {$column} {$operator} ?";
+        }
+        $this->bindings[] = $value;
+        return $this;
+    }
+
+    public function and ( string $column, string $operator, $value = null) {
+        return $this->where($column, $operator, $value);
+    }
+
+    public function or(string $column, string $operator, $value = null) {
+        if ($value === null) {
+            $value = $operator;
+            $operator = '=';
+        }
+
+        if (empty($this->query)) {
+            $this->query .= " WHERE {$column} {$operator} ?";
+        } else {
+            $this->query .= " OR {$column} {$operator} ?";
+        }
+
         $this->bindings[] = $value;
         return $this;
     }
@@ -54,7 +81,13 @@ class DB {
 
     public function select($columns = ['*']) {
         $columns = is_array($columns) ? implode(', ', $columns) : $columns;
-        $this->query = "SELECT {$columns} FROM {$this->table}";
+
+        // Check if a query already exists (i.e., from `where` calls)
+        if (strpos($this->query, 'WHERE') !== false || strpos($this->query, 'ORDER BY') !== false || strpos($this->query, 'LIMIT') !== false) {
+            $this->query = "SELECT {$columns} FROM {$this->table}" . str_replace("SELECT * FROM {$this->table}", '', $this->query);
+        } else {
+            $this->query = "SELECT {$columns} FROM {$this->table}";
+        }
         return $this;
     }
 
@@ -68,6 +101,7 @@ class DB {
 
     public function execute(){
         // end method to be called to execute the query;
+        // var_dump($this->query);
         $stmt = $this->getPdo()->prepare($this->query);
         $stmt->execute($this->bindings);
         return $stmt;

@@ -9,7 +9,10 @@ use Framework\DB;
 class Movie {
     public function list(Request $request, Response $response) {
         $movies =  DB::table('movies')
-        ->select(['id', 'title', 'year', 'ranking']) // Selecting specific columns
+        ->where('year', '>=', 2020)
+        ->or('ranking','>=',1)
+        // ->and('ranking','>=',1)
+        ->select(['id', 'title', 'year', 'ranking']) 
         ->execute()
         ->fetchAll(\PDO::FETCH_ASSOC);
 
