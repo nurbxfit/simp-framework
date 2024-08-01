@@ -13,7 +13,7 @@ class Home {
     }
 
     public function other(Request $request, Response $response ){
-        $message = "Other method";
+        
         $response->view('Home.Index', [
             "message" => "Hello",
             "subtext" => "Other"
