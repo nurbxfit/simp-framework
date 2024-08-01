@@ -9,8 +9,9 @@ $homeController = new Home;
 
 
 Router::get('/home/example',function (Request $request, Response $response) {
-        $response->view('Home.Example',[
-            "message" => "Hello"
+        $response->view('Home.Index',[
+            "message" => "Hello",
+            "subtext" => "Example"
         ]);
     });
 

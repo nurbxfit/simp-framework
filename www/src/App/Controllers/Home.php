@@ -14,7 +14,10 @@ class Home {
 
     public function other(Request $request, Response $response ){
         $message = "Other method";
-        echo $message;
+        $response->view('Home.Index', [
+            "message" => "Hello",
+            "subtext" => "Other"
+        ]);
     }
 
     public function networksGet() {

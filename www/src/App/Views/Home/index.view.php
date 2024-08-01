@@ -7,10 +7,12 @@
     <?= $view->partial('Shared.Style')  ?>
 </head>
 <body>
-    <div class="container">
-        <h1><?= htmlspecialchars($message) ?></h1>
-
-        <p><a href="/movies">Go to Movies</a></p>
+    <? $view->partial('Shared.MainNav') ?>
+    <div class="text-[#333] text-center p-[50px]">
+        <h1 class="text-[72px]  font-semibold"><?= htmlspecialchars($message) ?></h1>
+        <p class="text-[18px] text-[#555]">
+            <?= htmlspecialchars($subtext) ?>
+        </p>
     </div>
 </body>
 </html>
