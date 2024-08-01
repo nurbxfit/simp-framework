@@ -15,7 +15,7 @@
             A simple MVC PHP Framework, using vanilla PHP with zero external dependencies. Help start your project with a clean structure and proper routing, moving beyond traditional file-based routing.
         </p>
         <div class="flex flex-col md:flex-row gap-4">
-            <a href="https://github.com/your-repository" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 ease-in-out" target="_blank">GitHub</a>
+            <a href="https://github.com/nurbxfit/simp-framework" class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 ease-in-out" target="_blank">GitHub</a>
             <a href="/docs" class="bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition duration-300 ease-in-out">Documentation</a>
         </div>
     </div>
