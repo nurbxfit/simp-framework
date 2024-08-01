@@ -1,9 +1,11 @@
-<div class="flex items-center justify-evenly gap-4 text-white bg-[#333366] px-20">
-    <a href="/">
-        <img class="w-20 h-20" src="/img/logo-no-background.svg"/>
-    </a>
-    <nav class="flex gap-4">
-        <a class="border rounded-sm border-r-2 px-2" href="/home/example">Example</a>
-        <a class="border rounded-sm border-r-2 px-2" href="/home/other">Other</a>
-    </nav>
+<div class="bg-[#333366] px-6 py-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <a href="/" class="flex items-center">
+            <img width="126" src="/img/logo-no-background.svg" alt="Logo"/>
+        </a>
+        <nav class="flex gap-6">
+            <a href="/home/example" class="text-white font-semibold hover:bg-[#44477a] rounded-md px-4 py-2 transition duration-300 ease-in-out">Example</a>
+            <a href="/home/other" class="text-white font-semibold hover:bg-[#44477a] rounded-md px-4 py-2 transition duration-300 ease-in-out">Other</a>
+        </nav>
+    </div>
 </div>
