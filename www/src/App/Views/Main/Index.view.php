@@ -9,7 +9,7 @@
     <?= $view->partial('Shared.Style')  ?>
 </head>
 <body>
-    <div class="mx-auto text-center text-[#333] p-[50px]">
+    <div class="mx-auto text-center text-[#333] p-[50px] bg-clifford">
         <img src=""/>
         <h1><?= htmlspecialchars($message) ?></h1>
 
