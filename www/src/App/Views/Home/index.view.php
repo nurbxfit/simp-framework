@@ -15,4 +15,5 @@
         </p>
     </div>
 </body>
+<? $view->partial('Shared.DevFooter') ?>
 </html>
